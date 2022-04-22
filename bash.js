@@ -2,6 +2,8 @@ const pwdCommand = require("./pwd");
 const lsCommand = require("./ls");
 const catCommand = require("./cat");
 
+const curlCommand=require("./curl");
+
 process.stdout.write("prompt >");
 
 process.stdin.on("data", (data) => {
@@ -15,12 +17,14 @@ process.stdin.on("data", (data) => {
     pwdCommand(cmd, done);
     lsCommand(cmd, done);
   } else if (splitCommand.length === 2) {
-    catCommand(splitCommand, done);
+    catCommand(splitCommand,done);
+
+    curlCommand(splitCommand,done);
   }
 
   setTimeout(function () {
     process.stdout.write("\nprompt>");
-  }, 1);
+  }, 500);
 });
 
 const done = (output) => {
