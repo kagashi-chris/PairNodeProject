@@ -2,31 +2,31 @@ const pwdCommand = require("./pwd");
 const lsCommand = require("./ls");
 const catCommand = require("./cat");
 
-const curlCommand=require("./curl");
+const curlCommand = require("./curl");
 
 process.stdout.write("prompt >");
 
 process.stdin.on("data", (data) => {
   const cmd = data.toString().trim();
 
-  process.stdout.write("You typed: " + cmd);
+  done("You typed: " + cmd);
 
   const splitCommand = cmd.split(" ");
 
   if (splitCommand.length === 1) {
-    pwdCommand(cmd);
-    lsCommand(cmd);
+    pwdCommand(cmd, done);
+    lsCommand(cmd, done);
   } else if (splitCommand.length === 2) {
-<<<<<<< HEAD
-    catCommand(splitCommand,done);
+    catCommand(splitCommand, done);
 
-    curlCommand(splitCommand,done);
-=======
-    catCommand(splitCommand);
->>>>>>> parent of a7632ea (Update)
+    curlCommand(splitCommand, done);
   }
 
   setTimeout(function () {
     process.stdout.write("\nprompt>");
   }, 500);
 });
+
+const done = (output) => {
+  process.stdout.write(output);
+};
