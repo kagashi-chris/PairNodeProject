@@ -9,17 +9,17 @@ process.stdout.write("prompt >");
 process.stdin.on("data", (data) => {
   const cmd = data.toString().trim();
 
-  process.stdout.write("You typed: " + cmd);
+  done("You typed: " + cmd);
 
   const splitCommand = cmd.split(" ");
 
   if (splitCommand.length === 1) {
-    pwdCommand(cmd);
-    lsCommand(cmd);
+    pwdCommand(cmd,done);
+    lsCommand(cmd,done);
   } else if (splitCommand.length === 2) {
-    catCommand(splitCommand);
+    catCommand(splitCommand,done);
 
-    curlCommand(splitCommand);
+    curlCommand(splitCommand,done);
   }
 
   setTimeout(function () {
@@ -27,6 +27,10 @@ process.stdin.on("data", (data) => {
   }, 500);
 });
 
+const done=(output)=>{
+
+  process.stdout.write(output)
+}
 
 
 
