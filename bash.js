@@ -14,19 +14,19 @@ process.stdin.on("data", (data) => {
   const splitCommand = cmd.split(" ");
 
   if (splitCommand.length === 1) {
-    pwdCommand(cmd, done);
-    lsCommand(cmd, done);
+    pwdCommand(cmd);
+    lsCommand(cmd);
   } else if (splitCommand.length === 2) {
+<<<<<<< HEAD
     catCommand(splitCommand,done);
 
     curlCommand(splitCommand,done);
+=======
+    catCommand(splitCommand);
+>>>>>>> parent of a7632ea (Update)
   }
 
   setTimeout(function () {
     process.stdout.write("\nprompt>");
   }, 500);
 });
-
-const done = (output) => {
-  process.stdout.write(output);
-};

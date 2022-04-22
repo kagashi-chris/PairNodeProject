@@ -1,5 +1,11 @@
-module.exports = function (cmd, done) {
-  if (cmd === "pwd") {
-    done("\n" + process.cwd());
-  }
-};
+module.exports=function(cmd){
+    if (cmd === "pwd") {process.stdout.write("\n" + process.cwd());
+
+
+    
+      
+}
+    
+    }
+
+    
