@@ -1,11 +1,11 @@
 const fs = require("fs");
 
-module.exports = function (splitCommand) {
+module.exports = function (splitCommand, done) {
   if (splitCommand[0] === "cat") {
     fs.readFile(splitCommand[1], (err, data) => {
-      if (err) throw err;
+      if (err) done(err);
       else {
-        process.stdout.write("\n" + data);
+        done("\n" + data);
       }
     });
   }

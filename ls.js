@@ -1,13 +1,13 @@
 const fs = require("fs");
 
-module.exports = function (cmd) {
+module.exports = function (cmd, done) {
   if (cmd === "ls") {
     fs.readdir("./", "utf8", (err, files) => {
       if (err) {
         throw err;
       } else {
-        process.stdout.write("\n");
-        process.stdout.write(files.join("\n"));
+        done("\n");
+        done(files.join("\n"));
       }
     });
   }

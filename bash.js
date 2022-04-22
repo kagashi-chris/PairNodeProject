@@ -12,13 +12,17 @@ process.stdin.on("data", (data) => {
   const splitCommand = cmd.split(" ");
 
   if (splitCommand.length === 1) {
-    pwdCommand(cmd);
-    lsCommand(cmd);
+    pwdCommand(cmd, done);
+    lsCommand(cmd, done);
   } else if (splitCommand.length === 2) {
-    catCommand(splitCommand);
+    catCommand(splitCommand, done);
   }
 
   setTimeout(function () {
     process.stdout.write("\nprompt>");
   }, 1);
 });
+
+const done = (output) => {
+  process.stdout.write(output);
+};
