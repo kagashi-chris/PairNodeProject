@@ -1,3 +1,7 @@
+const pwdCommand=require('./pwd');
+const lsCommand=require('./ls')
+
+
 process.stdout.write("prompt >");
 
 process.stdin.on("data", (data) => {
@@ -5,7 +9,13 @@ process.stdin.on("data", (data) => {
 
   process.stdout.write("You typed: " + cmd);
 
-  if (cmd === "pwd") process.stdout.write("\n" + process.cwd());
 
-  process.stdout.write("\nprompt >");
+  pwdCommand(cmd);
+  lsCommand(cmd);
+  setTimeout(function() {
+    process.stdout.write('\nprompt>')},0 );
+  
 });
+
+
+
